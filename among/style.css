@@ -1,0 +1,16 @@
+body{
+
+    /* 這個部分設定flex讓整個物件左右上下置中並且滿版 */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+}
+.impostor {
+    position: relative;
+  }
+  .impostor .body {
+    position: relative;
+    
