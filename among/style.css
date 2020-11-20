@@ -1,16 +1,32 @@
-body{
+body {
+      /* 這個部分設定之後會讓整個body內的物件完全置中 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+  }
+  .impostor {
+        /* 這邊是設定讓body跟一些配件像是背包安全帽
+        四肢等等做定位使用 */
 
-    /* 這個部分設定flex讓整個物件左右上下置中並且滿版 */
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-
-}
-.impostor {
     position: relative;
   }
+
   .impostor .body {
-    position: relative;
-    
+
+        position: relative;
+        width: 300px;
+        height: 420px;
+        /* 這個部分是他做出圓弧狀最重要的點 */
+        /* 四個數值表示四個角順時針走 */
+        border-radius: 35% 45% 0 0;
+        border: 30px solid #000;
+
+        overflow: hidden;
+  }
+  .impostor .fill{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: red;
+  }
