@@ -44,19 +44,39 @@ body {
       position: absolute;
       width: 200px;
       height: 130px;
-      background: blue;
-      right: 0;
-      top: 0;
+      background: #4a646d;
+      right: -20px;
+      top: 90px;
       border: 30px solid #000;
       border-radius: 25% 45% 40% 40% / 50%;
       overflow: hidden;
+      /* 讓鏡片旋轉一點點 */
+      transform: rotate(-4deg);
 }
 .impostor .glass-bowl .reflection-blue{
       position: absolute;
       right: 0;
       width: 90%;
       height: 70px;
-      background: lightblue;
+      background:#94c0db;
       border-radius: 10% 10% 100% 100% / 100% 100%
       50% 100%;
+}
+.impostor .glass-bowl .reflection-white{
+      position: absolute;
+      right: 10%;
+      top: 10px;
+      width: 50%;
+      height: 40px;
+      background:#fff;
+      border-radius: 30% 70% 30% 30% / 30% 70%
+      30% 60%;
+}
+.impostor .legs .leg-left{
+      width: 90px;
+      height: 100px;
+      background: #7B0236;
+      border-left: 30px solid #000;
+      border-right: 30px solid #000;
+      border-bottom: 30px solid #000;
 }
