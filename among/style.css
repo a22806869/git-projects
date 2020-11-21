@@ -18,15 +18,45 @@ body {
         width: 300px;
         height: 420px;
         /* 這個部分是他做出圓弧狀最重要的點 */
-        /* 四個數值表示四個角順時針走 */
+        /* 四個數值表示四個角順時針走 從最左上角開始 */
         border-radius: 35% 45% 0 0;
         border: 30px solid #000;
-
+            /* 這邊使用overflow是因為紅色填充物超出外框了讓超出的部分隱藏 */
         overflow: hidden;
   }
   .impostor .fill{
+        /* 這邊就會定位在父層也就是 .imposter .body上面 */
         position: absolute;
         width: 100%;
         height: 100%;
-        background: red;
+        /* 這邊是陰影的顏色 */
+        background: #7B0236;
   }
+  .impostor .shadow{
+        position: absolute;
+        width: 100%;
+        height: 90%;
+        background: #c70a01;
+        border-radius: 0% 10% 25% 40% / 
+        20% 0% 100% 100%;
+  }
+.impostor .glass-bowl{
+      position: absolute;
+      width: 200px;
+      height: 130px;
+      background: blue;
+      right: 0;
+      top: 0;
+      border: 30px solid #000;
+      border-radius: 25% 45% 40% 40% / 50%;
+      overflow: hidden;
+}
+.impostor .glass-bowl .reflection-blue{
+      position: absolute;
+      right: 0;
+      width: 90%;
+      height: 70px;
+      background: lightblue;
+      border-radius: 10% 10% 100% 100% / 100% 100%
+      50% 100%;
+}
