@@ -144,7 +144,7 @@ body {
 
 }
 
-video {
+.video {
       width: 100vw;
       mix-blend-mode: screen;
       position: fixed;
