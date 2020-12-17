@@ -87,7 +87,10 @@ class Store {
         }
 
         return books;
+
+
     }
+
 
     static addBook(book) {
         const books = Store.getBooks();
@@ -155,12 +158,6 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
         //Clear fields
         UI.clearFields();
     }
-
-
-
-
-
-
 })
 
 
@@ -174,5 +171,5 @@ document.querySelector('#book-list').addEventListener('click', (e) => {
     //remove book from store
     Store.removebook(e.target.parentElement.previousElementSibling.textContent);
 
-    UI.showAlert('Book Added', 'success')
+    UI.showAlert('Book Removed', 'success')
 })
