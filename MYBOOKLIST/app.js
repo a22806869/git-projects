@@ -87,8 +87,6 @@ class Store {
         }
 
         return books;
-
-
     }
 
 
