@@ -61,10 +61,10 @@ function checkLength(input, min, max) {
 function checkPasswordMatch(input1, input2) {
   if (input1.value !== input2.value) {
     showError(input2, "Password do not match");
-  } else if (input2.value === "") {
-    showError(input2, "Password is empty");
+    // console.log("if");
   } else {
     showSuccess(input2);
+    // console.log("else");
   }
 }
 
