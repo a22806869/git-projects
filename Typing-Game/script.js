@@ -1,8 +1,8 @@
 const word = document.getElementById('word');
 const text = document.getElementById('text');
-const scoreEl = document.createElement('score');
-const timeEl = document.createElement('time');
-const endgameEl = document.createElement('end-game');
+const scoreEl = document.getElementById('score');
+const timeEl = document.getElementById('time');
+const endgameEl = document.getElementById('end-game');
 const settingBtn = document.getElementById('settings-btn');
 const settings = document.getElementById('settings');
 const settingsForm = document.getElementById('settings-form');
@@ -54,6 +54,14 @@ function addWordToDOM() {
     word.innerHTML = randomWord;
 }
 
+//update score
+function updateScore() {
+    score++;
+    scoreEl.innerHTML = score;
+
+}
+
+
 addWordToDOM();
 
 
@@ -66,6 +74,9 @@ text.addEventListener('input', e => {
 
         //當答案符合則顯示下一題題目
         addWordToDOM()
+
+        updateScore();
+
 
         //當答案符合則清空內容(clear)
         e.target.value = '';
