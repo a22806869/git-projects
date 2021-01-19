@@ -81,8 +81,7 @@ function updateTime() {
     }
 }
 
-//game over show end screen
-
+//做出遊戲結束時的頁面並且修改class為flex讓頁面可以呈現(game over show end screen)
 function gameOver() {
     endgameEl.innerHTML = `
     <h1>Time ran out</h1>
@@ -92,6 +91,7 @@ function gameOver() {
     endgameEl.style.display = "flex";
 }
 
+//這裡必須寫在外面呼叫第一次當作預設值
 addWordToDOM();
 
 
@@ -110,5 +110,10 @@ text.addEventListener('input', e => {
 
         //當答案符合則清空內容(clear)
         e.target.value = '';
+
+        //當答案符合則時間加五秒
+        time += 5;
+
+        updateTime();
     }
 })
