@@ -63,9 +63,11 @@ text.addEventListener('input', e => {
     const insertedText = e.target.value;
 
     if (insertedText === randomWord) {
+
+        //當答案符合則顯示下一題題目
         addWordToDOM()
 
-        //clear
+        //當答案符合則清空內容(clear)
         e.target.value = '';
     }
 })
