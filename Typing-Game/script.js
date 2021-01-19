@@ -43,6 +43,10 @@ let time = 10;
 //當進入頁面就直接可以focous在input區域不需要移動鼠標過去(focous on text on start)
 text.focus();
 
+//每秒數一次(start counting down)
+// 使用setInterval來每秒使用一次updateTime也就是更新時間
+const timeInterval = setInterval(updateTime, 1000);
+
 //隨機取陣列中物件的方法
 function getRandomWord() {
 
@@ -61,9 +65,17 @@ function addWordToDOM() {
 function updateScore() {
     score++;
     scoreEl.innerHTML = score;
-
 }
 
+//update time
+function updateTime() {
+    time--;
+    timeEl.innerHTML = time + "s";
+
+    if (time === 0) {
+        clearInterval(timeInterval);
+    }
+}
 
 addWordToDOM();
 
