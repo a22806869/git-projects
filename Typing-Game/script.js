@@ -40,6 +40,9 @@ let score = 0;
 //init time
 let time = 10;
 
+//當進入頁面就直接可以focous在input區域不需要移動鼠標過去(focous on text on start)
+text.focus();
+
 //隨機取陣列中物件的方法
 function getRandomWord() {
 
@@ -54,7 +57,7 @@ function addWordToDOM() {
     word.innerHTML = randomWord;
 }
 
-//update score
+//直接把數字加一因為函式放在判斷式中並且已經判斷答對了(update score)
 function updateScore() {
     score++;
     scoreEl.innerHTML = score;
@@ -75,8 +78,8 @@ text.addEventListener('input', e => {
         //當答案符合則顯示下一題題目
         addWordToDOM()
 
+        //答對加分更新分數上去
         updateScore();
-
 
         //當答案符合則清空內容(clear)
         e.target.value = '';
