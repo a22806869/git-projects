@@ -97,6 +97,7 @@ addWordToDOM();
 
 //event lisenter
 
+//typing
 text.addEventListener('input', e => {
     const insertedText = e.target.value;
 
@@ -114,6 +115,10 @@ text.addEventListener('input', e => {
         //當答案符合則時間加五秒
         time += 5;
 
+        // 最後更新時間
         updateTime();
     }
 })
+
+//settings btn click
+settingBtn.addEventListener('click', () => settings.classList.toggle('hide'));
