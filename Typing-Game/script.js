@@ -6,7 +6,7 @@ const endgameEl = document.getElementById('end-game-container');
 const settingBtn = document.getElementById('settings-btn');
 const settings = document.getElementById('settings');
 const settingsForm = document.getElementById('settings-form');
-const difficultySelector = document.getElementById('difficulty')
+const difficultySelect = document.getElementById('difficulty')
 
 const words = [
     'sigh',
@@ -39,6 +39,15 @@ let score = 0;
 
 //init time
 let time = 10;
+
+//LS資料當不為空的時候存取剛剛存取的下拉式選單的值不然就顯示medium當作初始值
+// init difficulty and set difficulty to value in LS or medium
+let difiiculty = localStorage.getItem('difficulty') !== null ? localStorage.getItem('difficulty') : 'medium';
+
+//把LS的紀錄的值放進去選單裡面直接重新賦值
+// set difficulty select value
+difficultySelect.value = difiiculty;
+
 
 //當進入頁面就直接可以focous在input區域不需要移動鼠標過去(focous on text on start)
 text.focus();
@@ -113,12 +122,25 @@ text.addEventListener('input', e => {
         e.target.value = '';
 
         //當答案符合則時間加五秒
-        time += 5;
+        if (difiiculty === 'hard') {
+            time += 2;
+        } else if (difiiculty === 'medium') {
+            time += 3;
+        } else {
+            time += 5;
+        }
 
         // 最後更新時間
         updateTime();
     }
 })
 
-//settings btn click
+//讓難易度選擇區塊顯示或隱藏(settings btn click)
 settingBtn.addEventListener('click', () => settings.classList.toggle('hide'));
+
+//當下拉式選單的值改變時存進去LS當下的diffuculty
+// setting select
+settingsForm.addEventListener('change', e => {
+    difficulty = e.target.value;
+    localStorage.setItem('difficulty', difficulty);
+})
