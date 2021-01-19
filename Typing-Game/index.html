@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <button id="settings-btn" class="setting_btn">
+    <button id="settings-btn" class="settings-btn">
         <i class="fas fa-cog"></i>
     </button>
     <div id="settings" class="settings">
@@ -19,9 +19,9 @@
             <div>
                 <label for="difficulty">Difficulty</label>
                 <select id="difficulty">
-                    <option value="easy"></option>
-                    <option value="medium"></option>
-                    <option value="hard"></option>
+                    <option value="easy">easy</option>
+                    <option value="medium">medium</option>
+                    <option value="hard">hard</option>
                 </select>
             </div>
         </form>
@@ -31,21 +31,22 @@
         <h2>👩‍💻 Speed Typer 👨‍💻</h2>
         <small>Type the following:</small>
 
+        <!-- 這邊的內容會由JS操作來同步顯示玩家輸入的文字 -->
         <h1 id="word"></h1>
 
         <input type="text" id="text" autocomplete="off" placeholder="Type the word here...">
 
-        <!-- 這邊的內容會由JS操作 -->
+        <!-- 這邊的內容會由JS操作來顯示時間 -->
         <p class="time-container">
             Time left: <span id="time">10s</span>
         </p>
 
-        <!-- 這邊的內容會由JS操作 -->
+        <!-- 這邊的內容會由JS操作來顯示分數 -->
         <p class="score-container">
             Score: <span id="score">0</span>
         </p>
 
-        <!-- 這邊的內容會由JS操作 -->
+        <!-- 這邊的內容會由JS操作來顯示結束遊戲 -->
         <div id="end-game-container" class="end-game-container"></div>
     </div>
 
