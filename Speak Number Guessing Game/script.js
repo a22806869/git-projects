@@ -55,6 +55,7 @@ function checkNumber(msg) {
 //這邊+1因為Math.random*100數字只到99不會到100所以必須做這個動作
 const randomNum = Math.floor(Math.random() * 100) + 1;
 
+console.log(randomNum);
 // 檢查隨機數字有無正常生成
 // console.log(randomNum);
 
@@ -69,3 +70,6 @@ recognition.start();
 
 //speak result
 recognition.addEventListener('result', onSpeak)
+
+//end SR service
+recognition.addEventListener('end', () => recognition.start());
