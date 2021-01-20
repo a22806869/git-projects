@@ -1,7 +1,5 @@
 const msgEl = document.getElementById("msg");
 
-
-
 //抓取使用者聲音的值capture user speak
 function onSpeak(e) {
     const msg = e.results[0][0].transcript;
@@ -48,20 +46,18 @@ function checkNumber(msg) {
     } else {
         msgEl.innerHTML += '<div>GO HIGHER</div>';
     }
-
-
 }
 
 //這邊+1因為Math.random*100數字只到99不會到100所以必須做這個動作
 const randomNum = Math.floor(Math.random() * 100) + 1;
 
 //把答案呈現在頁面上以便確認功能
-console.log(randomNum);
+// console.log(randomNum);
 
 // 檢查隨機數字有無正常生成
 // console.log(randomNum);
 
-//引入聲音辨識進來window
+//瀏覽器相容使用
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
 
 let recognition = new SpeechRecognition();
