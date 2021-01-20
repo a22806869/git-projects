@@ -34,20 +34,7 @@ function checkNumber(msg) {
         return;
     }
 
-    //確認範圍
-    if (num > 100 || num < 1) {
-        msgEl.innerHTML += `<div>Number must be between 1 - 100</div>`;
-        return;
-    }
 
-    //確認是否猜對
-    if (num === randomNum) {
-        document.body.innerHTML = `<h2>Congrats! You have guessed the number! <br>It was ${num}</h2><button class="play-again" id="play-again">Play Again</button>`
-    } else if (num > randomNum) {
-        msgEl.innerHTML += '<div>GO LOWER</div>';
-    } else {
-        msgEl.innerHTML += '<div>GO HIGHER</div>';
-    }
 }
 
 //這邊+1因為Math.random*100數字只到99不會到100所以必須做這個動作
