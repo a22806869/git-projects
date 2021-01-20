@@ -121,7 +121,7 @@ text.addEventListener('input', e => {
         //當答案符合則清空內容(clear)
         e.target.value = '';
 
-        //當答案符合則時間加五秒
+        //對應當下的難度加時間
         if (difiiculty === 'hard') {
             time += 2;
         } else if (difiiculty === 'medium') {
