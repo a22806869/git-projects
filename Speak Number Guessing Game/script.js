@@ -1,4 +1,4 @@
-const msgEl = document.getElementById(msg);
+const msgEl = document.getElementById("msg");
 
 
 
@@ -6,7 +6,18 @@ const msgEl = document.getElementById(msg);
 function onSpeak(e) {
     const msg = e.results[0][0].transcript;
 
-    console.log(msg);
+    //檢查是否有音檔產生的值
+    // console.log(msg);
+
+    writeMessage(msg);
+    // checkNumber(msg);
+}
+
+//write what user speaks to DOM
+function writeMessage(msg) {
+    msgEl.innerHTML = `
+    <div>You said:</div>
+    <span class="box">${msg}</span>`;
 }
 
 
@@ -22,7 +33,6 @@ window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogn
 let recognition = new SpeechRecognition();
 
 //start recogniiton and game
-
 recognition.start();
 
 
