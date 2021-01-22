@@ -3,6 +3,7 @@ const hours = document.getElementById('hours');
 const minutes = document.getElementById('minutes');
 const secounds = document.getElementById('seconds');
 const countdown = document.getElementById('countdown');
+const year = document.getElementById('year');
 
 const currentYear = new Date().getFullYear();
 
@@ -23,6 +24,7 @@ function updateCountdown() {
   hours.innerHTML = h < 10 ? '0' + h : h;
   minutes.innerHTML = m < 10 ? '0' + m : m;
   secounds.innerHTML = s < 10 ? '0' + s : s;
+  year.innerHTML = currentYear + 1;
 
 }
 
