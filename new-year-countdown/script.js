@@ -7,12 +7,11 @@ const year = document.getElementById('year');
 const loading = document.getElementById('loading');
 
 const currentYear = new Date().getFullYear();
-
 const newYearTime = new Date(`January 01 ${currentYear + 1} 00:00:00`);
 
 
 
-// Update countdown time
+// 讓倒數時間可以更新
 function updateCountdown() {
   const currentTime = new Date();
   const diff = newYearTime - currentTime;
@@ -22,7 +21,7 @@ function updateCountdown() {
   const m = Math.floor(diff / 1000 / 60) % 60;
   const s = Math.floor(diff / 1000) % 60;
 
-  // Add values to DOM
+  // 把數字推到DOM上面
   days.innerHTML = d;
   hours.innerHTML = h < 10 ? '0' + h : h;
   minutes.innerHTML = m < 10 ? '0' + m : m;
@@ -30,11 +29,12 @@ function updateCountdown() {
   year.innerText = currentYear + 1;
 }
 
-// Show spinner before countdown
+// 把loading畫面show出來
+// 設定在一秒內移除loading畫面以及把flex屬性加回去countdown
 setTimeout(() => {
   loading.remove();
   countdown.style.display = 'flex';
 }, 1000);
 
-// Run every second
+// 每秒更新一次
 setInterval(updateCountdown, 1000);
