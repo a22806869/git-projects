@@ -57,8 +57,8 @@ h1 {
 }
 
 .countdown {
-  /* 讓他們成橫排列 */
-  display: flex;
+  /* flex讓他們成橫排列 */
+  display: none;
 
   /* 放大或是縮小的倍率 */
   transform: scale(2);
