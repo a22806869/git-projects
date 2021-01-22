@@ -5,7 +5,8 @@
 }
 
 body {
-  background-image: url('https://images.unsplash.com/photo-1467810563316-b5476525c0f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1349&q=80');
+  background-image: url('https://images.unsplash.com/photo-1467810563316-b5476525c0f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit-crop&w=1349&q=80');
+
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -18,10 +19,12 @@ body {
   justify-content: center;
   text-align: center;
   margin: 0;
+
+  /* 讓卷軸不出現 */
   overflow: hidden;
 }
 
-/* Add a dark overlay */
+/* 製作一個黑色的罩子讓白字更顯眼 */
 body::after {
   content: '';
   position: absolute;
@@ -32,6 +35,7 @@ body::after {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+/* 把body內部的東西全部蓋在最上層 */
 body * {
   z-index: 1;
 }
@@ -41,19 +45,11 @@ h1 {
   margin: -80px 0 40px;
 }
 
-.year {
-  font-size: 200px;
-  z-index: -1;
-  opacity: 0.2;
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
 .countdown {
-  /* display: flex; */
-  display: none;
+  /* 讓他們成橫排列 */
+  display: flex;
+
+  /* 放大或是縮小的倍率 */
   transform: scale(2);
 }
 
@@ -69,7 +65,8 @@ h1 {
   margin: 0 0 5px;
 }
 
-@media (max-width: 500px) {
+/* 縮小字體跟一些margin讓小螢幕裝置也可以使用 */
+@media(max-width:500px) {
   h1 {
     font-size: 45px;
   }
@@ -84,6 +81,6 @@ h1 {
   }
 
   .time small {
-    font-size: 10px;
+    font-size: 10;
   }
 }
