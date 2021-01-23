@@ -17,7 +17,7 @@ const richestPeople =[
 //Store list items
 const listItems =[];
 
-console.log(listItems);
+// console.log(listItems);
 let dragStartIndex;
 
 createList();
@@ -28,10 +28,14 @@ function createList(){
 
     // 如果不使用展開運算子就會只印出一個陣列包含所有名字而無法迭代
     [...richestPeople]
+        //這部分使順序變成隨機
     .map((a) =>({value:a, sort:Math.random()}))
 
+    // 這邊使用sort來做排序sort大的網前擺
     // 這邊a.sort後面的sort部分是上面object的屬性不是方法要注意
     .sort((a,b) =>(a.sort-b.sort))
+
+    // 只印出其中的value也就是名字的部分
     .map((a) =>a.value)
     .forEach((person, index)=>{
         // console.log(person);
@@ -54,7 +58,7 @@ function createList(){
         draggable_list.appendChild(listItem);
     })
 
-    // 一次要附上多個事件監聽時可以這樣使用
+    // 這邊的事件處理的內容都在這個創造的li上面所以這樣處理
     addEventListeners();
 }
 
@@ -81,6 +85,8 @@ function dragOver(e){
     // 這邊做避免預設的狀況才有辦法使用swapItems這個函式不然會被一直提交
     e.preventDefault();
 }
+
+// 這邊的函式作用在於取的start,end的index並丟進去swapItems去作用
 function dragDrop(){
     const dragEndIndex = +this.getAttribute('data-index');
     swapItems(dragStartIndex, dragEndIndex);
@@ -94,6 +100,8 @@ function swapItems(fromIndex, toIndex){
     // 這邊會抓取到名字內容的div
     const itemOne = listItems[fromIndex].querySelector('.draggable');
     const itemTwo = listItems[toIndex].querySelector('.draggable');
+
+    console.log(itemOne);
 
     // 兩個互相appnedChild交換內容
     listItems[fromIndex].appendChild(itemTwo);
