@@ -1,7 +1,7 @@
 const draggable_list=document.getElementById('draggable-list');
 const check = document.getElementById('check');
 
-const richestPeoples =[
+const richestPeople =[
     'Jeff Bezos',
   'Bill Gates',
   'Warren Buffett',
@@ -17,6 +17,7 @@ const richestPeoples =[
 //Store list items
 const listItems =[];
 
+console.log(listItems);
 let dragStartIndex;
 
 createList();
@@ -26,14 +27,14 @@ createList();
 function createList(){
 
     // 如果不使用展開運算子就會只印出一個陣列包含所有名字而無法迭代
-    [...richestPeoples]
+    [...richestPeople]
     .map((a) =>({value:a, sort:Math.random()}))
 
     // 這邊a.sort後面的sort部分是上面object的屬性不是方法要注意
     .sort((a,b) =>(a.sort-b.sort))
     .map((a) =>a.value)
     .forEach((person, index)=>{
-        console.log(person);
+        // console.log(person);
 
         const listItem = document.createElement('li');
 
@@ -53,8 +54,28 @@ function createList(){
         draggable_list.appendChild(listItem);
     })
 
-    console.log(...richestPeoples);
+    // 一次要附上多個事件監聽時可以這樣使用
+    addEventListeners();
 }
 
 
 
+
+function addEventListeners() {
+    const draggables = document.querySelectorAll('.draggable');
+    const dragListItems = document.querySelectorAll('.draggable-list li');
+  
+    draggables.forEach(draggable => {
+      draggable.addEventListener('dragstart', dragStart);
+    });
+  
+    dragListItems.forEach(item => {
+      item.addEventListener('dragover', dragOver);
+      item.addEventListener('drop', dragDrop);
+      item.addEventListener('dragenter', dragEnter);
+      item.addEventListener('dragleave', dragLeave);
+    });
+
+}
+
+check.addEventListener('click', checkOrder);
