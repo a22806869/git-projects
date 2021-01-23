@@ -89,6 +89,18 @@ function dragDrop(){
 }
 
 
+function swapItems(fromIndex, toIndex){
+    
+    // 這邊會抓取到名字內容的div
+    const itemOne = listItems[fromIndex].querySelector('.draggable');
+    const itemTwo = listItems[toIndex].querySelector('.draggable');
+
+    // 兩個互相appnedChild交換內容
+    listItems[fromIndex].appendChild(itemTwo);
+    listItems[toIndex].appendChild(itemOne);
+}
+
+
 
 
 function addEventListeners() {
