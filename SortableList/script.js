@@ -58,6 +58,36 @@ function createList(){
     addEventListeners();
 }
 
+// 這個func的目的在於交換跟drop區域的內容
+//dragStartIndex這個變數設置在全域是因為整個轉換的過程會在drop那邊進行，這邊只是先抓取index而已
+function dragStart(){
+
+    // 這邊的this抓取的是div而我們要的是它外層的li
+    // 所以使用closest("li")去抓取
+    dragStartIndex = +this.closest("li").getAttribute("data-index");
+}
+
+// 當拖曳的目標進入li時觸發class=over也就是變灰框框
+function dragEnter(){
+    this.classList.add("over")
+}
+// 當拖曳目標離開li時觸發，會拉掉class=over
+function dragLeave(){
+    this.classList.remove("over")
+    
+}
+
+function dragOver(e){
+    // 這邊做避免預設的狀況才有辦法使用swapItems這個函式不然會被一直提交
+    e.preventDefault();
+}
+function dragDrop(){
+    const dragEndIndex = +this.getAttribute('data-index');
+    swapItems(dragStartIndex, dragEndIndex);
+
+    this.classList.remove("over");
+}
+
 
 
 
