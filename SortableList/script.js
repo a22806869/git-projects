@@ -100,7 +100,19 @@ function swapItems(fromIndex, toIndex){
     listItems[toIndex].appendChild(itemOne);
 }
 
+//確認是否是正確的順序(跟richestPeople作對比)
+function checkOrder(){
+    listItems.forEach((listItem, index) =>{
+        const personName = listItem.querySelector('.draggable').innerText.trim();
 
+        if(personName !== richestPeople[index]){
+            listItem.classList.add('wrong');
+        }else{
+            listItem.classList.remove('wrong');
+            listItem.classList.add('right');
+        }
+    })
+}
 
 
 function addEventListeners() {
