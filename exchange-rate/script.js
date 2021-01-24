@@ -84,13 +84,20 @@ function calculate() {
     });
 }
 
-// 秀出匯率在amount中間
-
 //事件監聽部分當change的時候呼叫calculate函式
 currencyOne.change(() => calculate());
 amountOne.change(() => calculate());
 currencyTwo.change(() => calculate());
 amountTwo.change(() => calculate());
+
+swapBtn.click(() => {
+  let temp = currencyOne.val();
+
+  currencyOne.val(currencyTwo.val());
+  currencyTwo.val(temp);
+
+  calculate();
+});
 
 // 讓頁面一進來就呈現amount部分
 calculate();
