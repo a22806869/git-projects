@@ -76,10 +76,15 @@ function calculate() {
   fetch(`https://api.exchangerate-api.com/v4/latest/${currencyOne.val()}`)
     .then((res) => res.json())
     .then((data) => {
-      const currency = data["rates"];
-      const rate = currency[`${currencyTwo.val()}`];
-      amountTwo.val(rate * amountOne.val());
+      // const currency = data["rates"];
+      // const rate = currency[`${currencyTwo.val()}`];
 
+      const rate = data.rates[currencyTwo.val()];
+
+      // 呈現amountTwo的DOM
+      amountTwo.val((rate * amountOne.val()).toFixed(2));
+
+      // 呈現匯率到DOM
       showRate.text(`1${currencyOne.val()} = ${rate} ${currencyTwo.val()}`);
     });
 }
@@ -91,6 +96,7 @@ currencyTwo.change(() => calculate());
 amountTwo.change(() => calculate());
 
 swapBtn.click(() => {
+  // 必須要使用temp當作currencyOne因為他已經先被指派別的value了
   let temp = currencyOne.val();
 
   currencyOne.val(currencyTwo.val());
