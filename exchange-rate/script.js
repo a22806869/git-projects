@@ -76,9 +76,8 @@ function calculate() {
   fetch(`https://api.exchangerate-api.com/v4/latest/${currencyOne.val()}`)
     .then((res) => res.json())
     .then((data) => {
-      // const currency = data["rates"];
-      // const rate = currency[`${currencyTwo.val()}`];
 
+      // 從API中取的rates的資料中currencyTwo的value所代表的匯率
       const rate = data.rates[currencyTwo.val()];
 
       // 呈現amountTwo的DOM
