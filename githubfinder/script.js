@@ -58,8 +58,6 @@ function getRepoData() {
                 msg = "Time out error.";
             } else if (exception === "abort") {
                 msg = "Ajax request aborted.";
-            } else {
-                msg = "Uncaught Error.\n" + jqXHR.responseText;
             }
             $("#alert").html(msg);
 
