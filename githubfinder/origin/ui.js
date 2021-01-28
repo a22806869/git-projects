@@ -36,7 +36,7 @@ class UI {
   showRepos(repos) {
     let output = '';
 
-    repos.forEach(function(repo) {
+    repos.forEach(function (repo) {
       output += `
         <div class="card card-body mb-2">
           <div class="row">
@@ -62,13 +62,13 @@ class UI {
     // Clear any remaining alerts
     this.clearAlert();
     // Create div
-    const div  =  document.createElement('div');
+    const div = document.createElement('div');
     // Add classes
     div.className = className;
     // Add text
     div.appendChild(document.createTextNode(message));
     // Get parent
-    const container =  document.querySelector('.searchContainer');
+    const container = document.querySelector('.searchContainer');
     // Get search box
     const search = document.querySelector('.search');
     // Insert alert
@@ -84,7 +84,7 @@ class UI {
   clearAlert() {
     const currentAlert = document.querySelector('.alert');
 
-    if(currentAlert){
+    if (currentAlert) {
       currentAlert.remove();
     }
   }
