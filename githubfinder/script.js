@@ -13,7 +13,7 @@ getInputValue();
 // 把取得的input作為變數放到url內去搜尋每個輸入的使用者
 function getUserData() {
     let username = $("#searchUser").val();
-    let url = `https://api.github.com/users/${username}`;
+    let url = `https://api.github.com/users/${username}?client_id=697ea502b3a20633062e&client_secret=f5599f32086ef5ab914bdb269877302d24688ecd `;
     $.ajax({
         type: "GET",
         url: url,
@@ -38,7 +38,7 @@ function getUserData() {
 
 function getRepoData() {
     let username = $("#searchUser").val();
-    let url = `https://api.github.com/users/${username}/repos?per_page=5&sort=created: asc `;
+    let url = `https://api.github.com/users/${username}/repos?per_page=5&sort=created: asc&client_id=${this.client_id}&client_secret=${this.client_secret} `;
     $.ajax({
         type: "GET",
         url: url,
