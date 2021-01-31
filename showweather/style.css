@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+
+* {
+    margin: 0;
+}
+
+h1 {
+    color: rgb(214, 208, 208);
+}
+
+body {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* position: relative; */
+    /* min-width: 1500px; */
+    /* min-width: 2000px; */
+    /* background-image: url(img/fc19ef294f445494cb05bda231a97046.png); */
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    justify-content: center;
+    align-items: center;
+    /* position: relative; */
+}
+
+.container .weather {
+    background-color: rgb(250, 250, 250);
+    border: solid 1px rgb(184, 182, 182);
+    width: 110px;
+    height: 200px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    /* position: absolute; */
+    box-shadow: 5px 10px 10px;
+
+}
+
+.container .weather img {
+    text-align: center;
+    width: 50%;
+    height: 100px;
+    margin: auto 0;
+}
