@@ -28,9 +28,9 @@ fetch(
       } else if (POP > 25 || POP < 40) {
         img = "img/cloud-sun.svg";
       } else if (POP > 50) {
-        img = "Um.svg";
+        img = "img/Um.svg";
       } else {
-        img = "rain.svg";
+        img = "img/rain.svg";
       }
 
       let card = document.querySelector(".container");
