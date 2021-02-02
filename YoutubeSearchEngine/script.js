@@ -1,48 +1,57 @@
 //取得input的值
-$('#btngetval').click(function (e) {
-    e.preventDefault();
-    let val = $('#inputval').val()
-    console.log(val);
+$("#btngetval").click(function (e) {
+  e.preventDefault();
+  let val = $("#inputval").val();
+  console.log(val);
 
-    getVideoData(val);
-})
-
+  getVideoData(val);
+  nextPage(val);
+});
 
 function getVideoData(val) {
+  $.ajax({
+    type: "GET",
+    url: `
+    https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&order=relevance&q=${val}&type=video&videoCaption=any&videoEmbeddable=any&videoLicense=any&videoType=any&prettyPrint=true&key=AIzaSyDNdqNoZCYqxEJ0nHKh3BWO7Yxc7fLLH2I`,
+    data: "data",
+    dataType: "json",
+    success: function (res) {
+      console.log(res);
 
-    $.ajax({
+      console.log(res);
+      let videos = res.items;
 
-        type: "GET",
-        url: `
-    https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&order=relevance&q=${val}&videoCaption=any&videoEmbeddable=any&videoLicense=any&videoType=any&prettyPrint=true&key=AIzaSyDNdqNoZCYqxEJ0nHKh3BWO7Yxc7fLLH2I`,
-        data: "data",
-        dataType: "dataType",
-        success: function (res) {
-            // console.log(res);
-            let videos = res.item;
+      console.log([...videos]);
 
-            [...videos].forEach(function (vid) {
+      let output = "";
 
-                let output =
-                    `<section class="video-area">
+      [...videos].forEach(function (vid) {
+        output += `<section class="video-area">
                 <div class="img">
-                  <a href="https://i.ytimg.com/vi/DZgFH-xagTY/hqdefault.jpg"
-                    ><img src="https://i.ytimg.com/vi/DZgFH-xagTY/hqdefault.jpg"
+                  
+                  <a href="https://www.youtube.com/embed/${vid.id.videoId}"
+                    ><img src="${vid.snippet.thumbnails.default.url}"
                   /></a>
                 </div>
-        
+
                 <div class="text">
-                  <a href="https://i.ytimg.com/vi/DZgFH-xagTY/hqdefault.jpg"
-                    ><h3>Video Titlesdffffffffffffffffffffffffffffffffffffffff</h3></a
-                  ><small>By <span> AuthorName </span> on 2015-05-17T09:54:02Z</small>
-                  <p>Video Description</p>
+                  <a href="https://www.youtube.com/embed/${vid.id.videoId}"
+                    ><h3>${vid.snippet.title}</h3></a
+                  ><small>By <span> ${vid.snippet.channelTitle} </span> on ${vid.snippet.publishedAt}</small>
+                  <p>${vid.snippet.description}</p>
                 </div>
-              </section>`
+              </section>
+              
+              
+              
+              `;
 
-                $('#container').html(output);
+        console.log(output);
+        $(".123").html(output);
 
-            })
-        }
-    });
-
-};
+        let btn = `<button class="next-btn btn" onclick = nextPage();>Next Page</button>`;
+        $(".456").html(btn);
+      });
+    },
+  });
+}
