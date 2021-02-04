@@ -1,31 +1,33 @@
 //取得input的值
 $("#btngetval").click(function (e) {
   e.preventDefault();
-  let val = $("#inputval").val();
+  let q = $("#inputval").val();
   // console.log(val);
 
-  getVideoData(val);
+  getVideoData(q);
 });
 
-function getVideoData(val) {
+function getVideoData(q) {
   $.ajax({
     type: "GET",
     url: `
-    https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&order=relevance&q=${val}&type=video&videoCaption=any&videoEmbeddable=any&videoLicense=any&videoType=any&prettyPrint=true&key=AIzaSyDNdqNoZCYqxEJ0nHKh3BWO7Yxc7fLLH2I`,
+    https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&order=relevance&q=${q}&type=video&videoCaption=any&videoEmbeddable=any&videoLicense=any&videoType=any&prettyPrint=true&key=AIzaSyDNdqNoZCYqxEJ0nHKh3BWO7Yxc7fLLH2I`,
     data: "data",
     dataType: "json",
+
     success: function (res) {
       // console.log(res);
 
       let videos = res.items;
 
       // console.log([...videos]);
-      console.log(res.nextPageToken);
+      // console.log(res.nextPageToken);
 
       let nextPageToken = res.nextPageToken;
       let prevPageToken = res.prevPageToken;
 
-
+      console.log(nextPageToken);
+      // console.log(...videos);
       let output = "";
 
       [...videos].forEach(function (vid) {
@@ -46,14 +48,16 @@ function getVideoData(val) {
               </section>
               `;
 
-        console.log(output);
+        // console.log(output);
         $(".123").html(output);
 
-        // nextPage(nextPageToken);
+
 
         // // 加入下一頁按鈕
         // let btn = `<button class="next-btn btn" onclick = "nextPage()";>Next Page</button>`;
         let buttons = getButtons(nextPageToken, prevPageToken);
+
+
         $(".456").html(buttons);
       });
     },
@@ -65,12 +69,10 @@ function nextPage() {
   var token = $('#next-button').data('token');
   var q = $('#next-button').data('query');
 
+  q = $("#inputval").val();
   // Clear Results
   $('.123').html('');
   $('.456').html('');
-
-  // Get Form Input
-  q = $('#query').val();
 
   // Run GET Request on API
   $.get(
@@ -86,9 +88,14 @@ function nextPage() {
       var prevPageToken = data.prevPageToken;
 
       // Log Data
-      console.log(data);
 
-      [...data].forEach(function (vid) {
+      let res = data.items;
+
+      console.log(...res);
+
+      let output = "";
+
+      [...res].forEach(function (vid) {
         output += `<section class="video-area">
                 <div class="img">
                   
@@ -108,6 +115,8 @@ function nextPage() {
 
         var buttons = getButtons(prevPageToken, nextPageToken);
 
+
+        $(".123").html(output);
         // Display Buttons
         $('.456').append(buttons);
       });
@@ -115,7 +124,7 @@ function nextPage() {
 };
 
 // Prev Page Function
-function nextPage() {
+function prevPage() {
   var token = $('#prev-button').data('token');
   var q = $('#prev-button').data('query');
 
@@ -124,7 +133,7 @@ function nextPage() {
   $('.456').html('');
 
   // Get Form Input
-  q = $('#query').val();
+  q = $("#inputval").val();
 
   // Run GET Request on API
   $.get(
@@ -139,10 +148,11 @@ function nextPage() {
       var nextPageToken = data.nextPageToken;
       var prevPageToken = data.prevPageToken;
 
-      // Log Data
-      console.log(data);
 
-      [...data].forEach(function (vid) {
+      let res = data.items;
+      let output = "";
+
+      [...res].forEach(function (vid) {
         output += `<section class="video-area">
                 <div class="img">
                   
@@ -162,6 +172,7 @@ function nextPage() {
 
         var buttons = getButtons(prevPageToken, nextPageToken);
 
+        $(".123").html(output);
         // Display Buttons
         $('.456').append(buttons);
       });
@@ -170,14 +181,18 @@ function nextPage() {
 
 // Build the buttons
 function getButtons(prevPageToken, nextPageToken) {
-  if (!prevPageToken) {
-    var btnoutput = '<div class="button-container">' + '<button id="next-button" class="paging-button" data-token="' + nextPageToken + '" data-query="' + q + '"' +
+
+  let a = prevPageToken;
+  let b = nextPageToken;
+  let c = $("#inputval").val();
+  if (!a) {
+    var btnoutput = '<div class="button-container">' + '<button id="next-button" class="paging-button" data-token="' + b + '" data-query="' + c + '"' +
       'onclick="nextPage();">Next Page</button></div>';
   } else {
     var btnoutput = '<div class="button-container">' +
-      '<button id="prev-button" class="paging-button" data-token="' + prevPageToken + '" data-query="' + q + '"' +
+      '<button id="prev-button" class=" btn paging-button" data-token="' + a + '" data-query="' + c + '"' +
       'onclick="prevPage();">Prev Page</button>' +
-      '<button id="next-button" class="paging-button" data-token="' + nextPageToken + '" data-query="' + q + '"' +
+      '<button id="next-button" class=" btn paging-button" data-token="' + b + '" data-query="' + c + '"' +
       'onclick="nextPage();">Next Page</button></div>';
   }
 
