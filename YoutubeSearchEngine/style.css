@@ -6,7 +6,6 @@
   box-sizing: border-box;
 }
 
-
 body {
   display: flex;
   flex-direction: column;
@@ -23,18 +22,13 @@ body {
 }
 
 * span {
-  z-index: 1;
   color: #06c5a9;
   position: relative;
 }
 
 nav h1 {
-  z-index: 1;
   font-weight: bold;
-  /* position: absolute;
-  top: 0;
-  left: 740px; */
-  /* perspective: 1000px; */
+  color: #707068;
 }
 
 a {
@@ -55,7 +49,6 @@ section {
   padding: 60px;
   margin: 40px;
   max-width: 700px;
-  /* max-height: 1200px; */
   box-shadow: 0 3px 10px rgba(255, 255, 255, 1);
   background-color: rgb(0, 0, 0);
   display: flex;
@@ -63,31 +56,9 @@ section {
   justify-content: center;
   align-items: stretch;
   border-radius: 5px;
-  /* perspective: 1000px; */
   height: auto;
   width: auto;
-  z-index: 1;
 }
-
-
-/* body::before {
-  content: "";
-  position: absolute;
-  top: 100px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.2);
-  z-index: 0;
-}
-
-body * {
-  z-index: 1;
-} */
-
 
 .container .search {
   display: flex;
@@ -96,18 +67,12 @@ body * {
 
 section input {
   outline: none;
-  z-index: 1;
   box-shadow: 0 3px 10px rgba(255, 255, 255, 1);
   border-radius: 5px;
 }
 
-/* section input:focus {
-  width: 300px;
-} */
-
 img {
   position: relative;
-  z-index: 10;
   margin: 10px;
   margin-right: 20px;
   width: 148px;
@@ -116,7 +81,6 @@ img {
   border-radius: 5px;
   border: solid 1px rgb(58, 57, 57);
   box-shadow: 0 3px 10px rgba(255, 255, 255, 1);
-  z-index: 1;
 }
 
 * p {
@@ -124,7 +88,6 @@ img {
 }
 
 .text {
-  z-index: 1;
   padding: 3px;
   margin: 10px;
 }
@@ -145,20 +108,30 @@ section .text {
   background: #444451;
   outline: none;
   color: #dedede;
-  z-index: 1;
   box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
 }
 
+#btngetval {
+  margin: 0;
+  margin-left: 2px;
+}
+
+.buttons {
+  display: flex;
+}
+
 .page {
-  z-index: 1;
   margin-bottom: 30px;
 }
 
 footer {
-  z-index: 1;
   color: #31312f;
 }
 
 footer span {
   color: #31312f;
+}
+
+footer p {
+  margin-bottom: 40px;
 }
