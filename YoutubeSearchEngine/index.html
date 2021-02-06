@@ -1,46 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>YouTube Search Engine</title>
+    <link rel="stylesheet" href="style.css" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <title>YouTube Search Engine</title>
-</head>
+    <!-- 來自fansybox官網 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+    />
+  </head>
 
-<body>
-  <nav class="navbar">
-    <h1>
-      <a href="https://www.youtube.com/"><span>YouTube</span></a> Search
-      Engine
-    </h1>
-  </nav>
+  <body>
+    <nav class="navbar">
+      <h1>
+        <a href="https://www.youtube.com/"><span>YouTube</span></a> Search
+        Engine
+      </h1>
+    </nav>
 
-  <div class="container">
-    <section class="search">
-      <input id="inputval" type="text" placeholder="Search..." />
-      <button id="btngetval" class="search-btn btn">Search</button>
-    </section>
+    <div class="container">
+      <section class="search">
+        <input id="inputval" type="text" placeholder="Search..." />
+        <button id="btngetval" class="search-btn btn">Search</button>
+      </section>
 
-    <div class="123"></div>
-    <div class="456"></div>
-
-  </div>
-  <!-- 上一頁下一頁 -->
-  <!-- <div class="page">
+      <div class="123"></div>
+      <div class="456"></div>
+    </div>
+    <!-- 上一頁下一頁 -->
+    <!-- <div class="page">
       <button class="next-btn btn">Next Page</button>
       <button class="pre-btn btn">Prev Page</button>
     </div> -->
 
-  <!-- 這邊的年份等下做JS動態處理年年更新 -->
-  <footer class="footer">
-    <p>Copyright © <span id="year">2021</span>, All Rights Reserved</p>
-  </footer>
+    <!-- 這邊的年份等下做JS動態處理年年更新 -->
+    <footer class="footer">
+      <p>Copyright © <span id="year"></span>, All Rights Reserved</p>
+    </footer>
 
-  <script src="script.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js
-    "></script>
-</body>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="script.js"></script>
 
+    <!-- 取得年分 -->
+    <script>
+      $("#year").text(new Date().getFullYear());
+    </script>
+
+    <!-- 來自fancybox官網 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+    <!-- 來自fancybox官方文件 -->
+    <script>
+      $("[data-fancybox]").fancybox({
+        toolbar: false,
+        smallBtn: true,
+        iframe: {
+          preload: false,
+        },
+      });
+    </script>
+  </body>
 </html>

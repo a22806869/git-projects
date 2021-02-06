@@ -1,9 +1,7 @@
-//取得input的值
+//取得input的值並且輸入getVideoData(q)內
 $("#btngetval").click(function (e) {
   e.preventDefault();
   let q = $("#inputval").val();
-  // console.log(val);
-
   getVideoData(q);
 });
 
@@ -14,33 +12,22 @@ function getVideoData(q) {
     https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&order=relevance&q=${q}&type=video&videoCaption=any&videoEmbeddable=any&videoLicense=any&videoType=any&prettyPrint=true&key=AIzaSyDNdqNoZCYqxEJ0nHKh3BWO7Yxc7fLLH2I`,
     data: "data",
     dataType: "json",
-
     success: function (res) {
-      // console.log(res);
-
       let videos = res.items;
-
-      // console.log([...videos]);
-      // console.log(res.nextPageToken);
-
       let nextPageToken = res.nextPageToken;
       let prevPageToken = res.prevPageToken;
-
-      console.log(nextPageToken);
-      // console.log(...videos);
       let output = "";
 
       [...videos].forEach(function (vid) {
         output += `<section class="video-area">
                 <div class="img">
-                  
-                  <a href="https://www.youtube.com/embed/${vid.id.videoId}"
+                  <a data-fancybox data-type="iframe" data-src="https://www.youtube.com/embed/${vid.id.videoId}" href="javascript:;"
                     ><img src="${vid.snippet.thumbnails.default.url}"
                   /></a>
                 </div>
 
                 <div class="text">
-                  <a href="https://www.youtube.com/embed/${vid.id.videoId}"
+                  <a data-fancybox data-type="iframe" data-src="https://www.youtube.com/embed/${vid.id.videoId}" href="javascript:;"
                     ><h3>${vid.snippet.title}</h3></a
                   ><small>By <span> ${vid.snippet.channelTitle} </span> on ${vid.snippet.publishedAt}</small>
                   <p>${vid.snippet.description}</p>
@@ -48,17 +35,12 @@ function getVideoData(q) {
               </section>
               `;
 
-        // console.log(output);
+        //貼上搜尋到的結果
         $(".123").html(output);
 
-
-
         // // 加入下一頁按鈕
-        // let btn = `<button class="next-btn btn" onclick = "nextPage()";>Next Page</button>`;
-        let buttons = getButtons(nextPageToken, prevPageToken);
-
-
-        $(".456").html(buttons);
+        let btn = getBtn(nextPageToken, prevPageToken);
+        $(".456").html(btn);
       });
     },
   });
@@ -66,46 +48,40 @@ function getVideoData(q) {
 
 // Next Page Function
 function nextPage() {
-  var token = $('#next-button').data('token');
-  var q = $('#next-button').data('query');
+  let nextPageToken = $("#next-button").data("token");
+  let q = $("#next-button").data("query");
 
   q = $("#inputval").val();
-  // Clear Results
-  $('.123').html('');
-  $('.456').html('');
 
-  // Run GET Request on API
-  $.get(
-    "https://www.googleapis.com/youtube/v3/search", {
-      part: 'snippet, id',
-      q: q,
-      pageToken: token,
-      type: 'video',
-      key: 'AIzaSyDNdqNoZCYqxEJ0nHKh3BWO7Yxc7fLLH2I'
-    },
-    function (data) {
-      var nextPageToken = data.nextPageToken;
-      var prevPageToken = data.prevPageToken;
+  // 清空內容
+  $(".123").html("");
+  $(".456").html("");
+
+  $.ajax({
+    type: "GET",
+    url: `
+    https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&order=relevance&pageToken=${nextPageToken}&q=${q}&type=video&videoCaption=any&videoEmbeddable=any&videoLicense=any&videoType=any&prettyPrint=true&key=AIzaSyDNdqNoZCYqxEJ0nHKh3BWO7Yxc7fLLH2I`,
+    data: "data",
+    dataType: "json",
+    success: function (data) {
+      let nextPageToken = data.nextPageToken;
+      let prevPageToken = data.prevPageToken;
 
       // Log Data
-
       let res = data.items;
-
-      console.log(...res);
-
       let output = "";
 
       [...res].forEach(function (vid) {
         output += `<section class="video-area">
                 <div class="img">
                   
-                  <a href="https://www.youtube.com/embed/${vid.id.videoId}"
+                  <a data-fancybox data-type="iframe" data-src="https://www.youtube.com/embed/${vid.id.videoId}" href="javascript:;"
                     ><img src="${vid.snippet.thumbnails.default.url}"
                   /></a>
                 </div>
 
                 <div class="text">
-                  <a href="https://www.youtube.com/embed/${vid.id.videoId}"
+                  <a data-fancybox data-type="iframe" data-src="https://www.youtube.com/embed/${vid.id.videoId}" href="javascript:;"
                     ><h3>${vid.snippet.title}</h3></a
                   ><small>By <span> ${vid.snippet.channelTitle} </span> on ${vid.snippet.publishedAt}</small>
                   <p>${vid.snippet.description}</p>
@@ -113,42 +89,40 @@ function nextPage() {
               </section>
               `;
 
-        var buttons = getButtons(prevPageToken, nextPageToken);
+        let btn = getBtn(nextPageToken, prevPageToken);
 
-
+        //貼上下一頁的搜尋結果
         $(".123").html(output);
+
         // Display Buttons
-        $('.456').append(buttons);
+        $(".456").css("display", "flex");
+        $(".456").html(btn);
       });
-    })
-};
+    },
+  });
+}
 
 // Prev Page Function
 function prevPage() {
-  var token = $('#prev-button').data('token');
-  var q = $('#prev-button').data('query');
+  let token = $("#prev-button").data("token");
+  let q = $("#next-button").data("query");
 
-  // Clear Results
-  $('.123').html('');
-  $('.456').html('');
-
-  // Get Form Input
   q = $("#inputval").val();
 
+  // Clear Results
+  $(".123").html("");
+  $(".456").html("");
+
   // Run GET Request on API
-  $.get(
-    "https://www.googleapis.com/youtube/v3/search", {
-      part: 'snippet, id',
-      q: q,
-      pageToken: token,
-      type: 'video',
-      key: 'AIzaSyDNdqNoZCYqxEJ0nHKh3BWO7Yxc7fLLH2I'
-    },
-    function (data) {
-      var nextPageToken = data.nextPageToken;
-      var prevPageToken = data.prevPageToken;
-
-
+  $.ajax({
+    type: "GET",
+    url: `
+    https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&order=relevance&pageToken=${nextPageToken}&q=${q}&type=video&videoCaption=any&videoEmbeddable=any&videoLicense=any&videoType=any&prettyPrint=true&key=AIzaSyDNdqNoZCYqxEJ0nHKh3BWO7Yxc7fLLH2I`,
+    data: "data",
+    dataType: "json",
+    success: function (data) {
+      let nextPageToken = data.nextPageToken;
+      let prevPageToken = data.prevPageToken;
       let res = data.items;
       let output = "";
 
@@ -156,13 +130,13 @@ function prevPage() {
         output += `<section class="video-area">
                 <div class="img">
                   
-                  <a href="https://www.youtube.com/embed/${vid.id.videoId}"
+                  <a data-fancybox data-type="iframe" data-src="https://www.youtube.com/embed/${vid.id.videoId}" href="javascript:;"
                     ><img src="${vid.snippet.thumbnails.default.url}"
                   /></a>
                 </div>
 
                 <div class="text">
-                  <a href="https://www.youtube.com/embed/${vid.id.videoId}"
+                  <a data-fancybox data-type="iframe" data-src="https://www.youtube.com/embed/${vid.id.videoId}" href="javascript:;"
                     ><h3>${vid.snippet.title}</h3></a
                   ><small>By <span> ${vid.snippet.channelTitle} </span> on ${vid.snippet.publishedAt}</small>
                   <p>${vid.snippet.description}</p>
@@ -170,31 +144,46 @@ function prevPage() {
               </section>
               `;
 
-        var buttons = getButtons(prevPageToken, nextPageToken);
+        let btn = getBtn(nextPageToken, prevPageToken);
 
+        //貼上上一頁的搜尋結果
         $(".123").html(output);
-        // Display Buttons
-        $('.456').append(buttons);
+
+        //貼上按鈕
+        $(".456").css("display", "flex");
+        $(".456").html(btn);
       });
-    })
-};
-
-// Build the buttons
-function getButtons(prevPageToken, nextPageToken) {
-
-  let a = prevPageToken;
-  let b = nextPageToken;
-  let c = $("#inputval").val();
-  if (!a) {
-    var btnoutput = '<div class="button-container">' + '<button id="next-button" class="paging-button" data-token="' + b + '" data-query="' + c + '"' +
-      'onclick="nextPage();">Next Page</button></div>';
-  } else {
-    var btnoutput = '<div class="button-container">' +
-      '<button id="prev-button" class=" btn paging-button" data-token="' + a + '" data-query="' + c + '"' +
-      'onclick="prevPage();">Prev Page</button>' +
-      '<button id="next-button" class=" btn paging-button" data-token="' + b + '" data-query="' + c + '"' +
-      'onclick="nextPage();">Next Page</button></div>';
-  }
-
-  return btnoutput;
+    },
+  });
 }
+
+//製造按鈕
+function getBtn(nextPageToken, prevPageToken) {
+  let q = $("#inputval").val();
+
+  // 如果沒有下一頁則按鈕不顯示
+  if (nextPageToken === undefined) {
+    $(".456").html();
+    return;
+    // 如果沒有上一頁的token則只顯示下一頁
+  } else if (prevPageToken === undefined) {
+    $(".456").html(
+      `<div class="button-container"><button id="next-button" class="btn paging-button" data-token="${nextPageToken}" data-query="${q}" onclick="nextPage();">Next Page</button></div>`
+    );
+    return;
+    //其他都顯示
+  } else {
+    $(".456").html(
+      `<div class="button-container"><button id="prev-button" class="btn paging-button" data-token="${prevPageToken}" data-query="${q}" onclick="prevPage();">Prev Page</button></div>
+    <div class="button-container"><button id="next-button" class="btn paging-button" data-token="${nextPageToken}" data-query="${q}" onclick="nextPage();">Next Page</button></div> `
+    );
+  }
+}
+
+// $('[data-fancybox]').fancybox({
+//   toolbar: false,
+//   smallBtn: true,
+//   iframe: {
+//     preload: false
+//   }
+// })
