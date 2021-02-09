@@ -3,11 +3,11 @@ $color-black:#000;
 $color-primary:#d3ab55;
 $color-secondary:#bbb;
 
-$font-dancingScript:'Dansing Script',
+$font-dancingScript: 'Dancing Script',
 cursive;
-$font-josefinSans:'Josefin Sans',
+$font-josefinSans: 'Josefin Sans',
 sans-serif;
-$font-nunito:'Nunito',
+$font-nunito: 'Nunito',
 sans-serif;
 
 @mixin flexlayout {
@@ -20,6 +20,13 @@ sans-serif;
     font-weight: 300;
     letter-spacing: 2px;
     text-transform: uppercase;
+}
+
+@mixin centering($topValue) {
+    position: absolute;
+    top: $topValue;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 * {
