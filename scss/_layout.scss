@@ -65,3 +65,12 @@
         }
     }
 }
+
+.gallery {
+    .cards-wrapper {
+        display: flex;
+
+        // 這邊使用wrap讓card的部分變成兩行
+        flex-wrap: wrap;
+    }
+}
