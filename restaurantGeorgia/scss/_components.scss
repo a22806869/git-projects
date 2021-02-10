@@ -57,7 +57,7 @@
     margin-right: 20px;
 
     // 去掉logo左側的一個底線露出來一點點的部分
-    // text-decoration: none;
+    text-decoration: none;
 
     // 這邊因為a tag內建是inline 屬性無法使用width,height所以需要轉換成block屬性，且因為logo置中的問題轉使用flex
     @include flexLayout;
