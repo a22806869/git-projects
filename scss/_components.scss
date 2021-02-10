@@ -1,3 +1,34 @@
+.hamburger-menu {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    top: 10%;
+    right: 5%;
+    z-index: 300;
+
+    .menu {
+        @extend %fullSpace;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        cursor: pointer;
+
+        // 設定menu旋轉的動畫時間
+        transition: transform .5s;
+
+        &-line {
+            width: 100%;
+            height: 4px;
+            background-color: $color-primary;
+
+            // 改變旋轉的圓心讓兩條直線變成交叉形成X
+            // 這邊設計右邊也就是直線的底端固定並且作旋轉
+            transform-origin: right;
+            transition: all .5s .5s;
+        }
+    }
+}
+
 .logo {
     font-size: 70px;
     color: $color-primary;
@@ -6,9 +37,10 @@
     border: 3px solid $color-primary;
     border-radius: 50%;
     margin-right: 20px;
+    text-decoration: none;
 
     // 這邊因為a tag內建是inline 屬性無法使用width,height所以需要轉換成block屬性，且因為logo置中的問題轉使用flex
-    @include flexlayout;
+    @include flexLayout;
 }
 
 .main-name {
@@ -40,6 +72,7 @@
     font-weight: 300;
     color: $color-secondary;
     margin-bottom: 80px;
+    text-align: center;
 }
 
 .main-btn {
@@ -83,7 +116,7 @@
         z-index: 10;
 
         // flex屬性預設是成行的
-        @include flexlayout;
+        @include flexLayout;
         flex-direction: column;
         @extend %fullSpace;
         transition: left .7s;
