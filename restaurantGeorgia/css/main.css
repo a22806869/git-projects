@@ -145,27 +145,27 @@ body {
   }
 }
 
-.checkbox:checked~.navbar-navigation .navbar-navigation-left {
+.checkbox:checked ~ .navbar-navigation .navbar-navigation-left {
   left: 0;
 }
 
-.checkbox:checked~.navbar-navigation .navbar-navigation-right {
+.checkbox:checked ~ .navbar-navigation .navbar-navigation-right {
   right: 0;
 }
 
-.checkbox:checked~.hamburger-menu .menu {
+.checkbox:checked ~ .hamburger-menu .menu {
   transform: rotateZ(90deg);
 }
 
-.checkbox:checked~.hamburger-menu .menu-line-1 {
+.checkbox:checked ~ .hamburger-menu .menu-line-1 {
   transform: rotateZ(-40deg);
 }
 
-.checkbox:checked~.hamburger-menu .menu-line-2 {
+.checkbox:checked ~ .hamburger-menu .menu-line-2 {
   opacity: 0;
 }
 
-.checkbox:checked~.hamburger-menu .menu-line-3 {
+.checkbox:checked ~ .hamburger-menu .menu-line-3 {
   transform: rotateZ(40deg);
 }
 
@@ -174,7 +174,8 @@ body {
   height: 100vh;
   position: relative;
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)),
-    url(https://raw.githubusercontent.com/chiehLiu/git-projects/gh-pages/restaurantGeorgia/bg.jpeg) center no-repeat;
+    url(https://raw.githubusercontent.com/chiehLiu/git-projects/gh-pages/restaurantGeorgia/scss/bg.jpeg)
+      center no-repeat;
   background-size: cover;
 }
 
