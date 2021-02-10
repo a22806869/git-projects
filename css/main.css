@@ -288,7 +288,6 @@ body {
       transition: all .5s .5s; }
       @media (max-width: 800px) {
         .hamburger-menu .menu-line {
-          width: 35px;
           height: 3px; } }
       @media (max-width: 500px) {
         .hamburger-menu .menu-line {
