@@ -37,10 +37,18 @@
     border: 3px solid $color-primary;
     border-radius: 50%;
     margin-right: 20px;
+
+    // 去掉logo左側的一個底線露出來一點點的部分
     text-decoration: none;
 
     // 這邊因為a tag內建是inline 屬性無法使用width,height所以需要轉換成block屬性，且因為logo置中的問題轉使用flex
     @include flexLayout;
+
+    @media (max-width:1000px) {
+        font-size: 50px;
+        width: 90px;
+        height: 90px;
+    }
 }
 
 .main-name {
@@ -48,6 +56,11 @@
     font-size: 50px;
     color: $color-secondary;
     @include textStyles;
+
+    @media (max-width:1000px) {
+        font-size: 40px;
+
+    }
 }
 
 .sub-name {
@@ -64,6 +77,15 @@
     font-weight: 300;
     color: $color-primary;
     margin-bottom: 40px;
+
+    @media (max-width: 1600px) {
+        font-size: 80px;
+    }
+
+    @media (max-width:1000px) {
+        font-size: 60px;
+
+    }
 }
 
 .sub-heading {
@@ -73,6 +95,22 @@
     color: $color-secondary;
     margin-bottom: 80px;
     text-align: center;
+
+    @media (max-width: 1600px) {
+        font-size: 50px;
+        margin-bottom: 50px;
+    }
+
+    @media (max-width: 1300px) {
+        font-size: 40px;
+        margin-bottom: 30px;
+    }
+
+    @media (max-width:1000px) {
+        font-size: 30px;
+
+    }
+
 }
 
 .main-btn {
@@ -124,14 +162,22 @@
         &-heading {
             font-family: $font-nunito;
             font-size: 50px;
-            @include textStyles(capitalize)
+            @include textStyles(capitalize);
+
+            @media (max-width:900px) {
+                font-size: 35px;
+            }
         }
 
         &-paragraph {
             font-family: $font-josefinSans;
             font-size: 30px;
             margin-bottom: 30px;
-            @include textStyles(capitalize)
+            @include textStyles(capitalize);
+
+            @media (max-width:900px) {
+                font-size: 20px;
+            }
         }
 
         &-btn {
@@ -148,6 +194,12 @@
             border-radius: 30px;
             outline: none;
             cursor: pointer;
+
+            @media (max-width:900px) {
+                font-size: 12px;
+                width: 130px;
+                height: 30px;
+            }
         }
     }
 
