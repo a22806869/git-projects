@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+// 這邊因為作者想要使用10px代替16px作為基礎 1em 因為比較方便
+// 所以10/16=0.625 使用到趴數上面就是62.5%
+html {
+    font-size: 62.5%;
+}
