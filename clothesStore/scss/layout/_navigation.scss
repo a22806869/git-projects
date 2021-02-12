@@ -9,8 +9,3 @@
     grid-row: 3/4;
     @include navigation;
 }
-
-// 在styling nav時作者推薦先把這邊隱藏
-.dropdown {
-    display: none;
-}
