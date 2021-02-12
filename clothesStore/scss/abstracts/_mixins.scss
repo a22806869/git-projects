@@ -1,0 +1,27 @@
+@mixin navigation {
+    &-list {
+        display: flex;
+
+        // 在每行上面均勻分配元素
+        justify-content: space-around;
+        align-items: center;
+
+        // 這邊必須設定高度不然align-item:center不會有效果
+        height: 100%;
+    }
+
+    &-item {
+        list-style: none;
+    }
+
+    &-link {
+        color: color(primary);
+        text-decoration: none;
+        font-size: size(sm);
+        transition: all .3s;
+
+        &:hover {
+            color: lighten(color(primary), 40%);
+        }
+    }
+}
