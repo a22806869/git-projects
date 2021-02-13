@@ -8,6 +8,16 @@
 // 所以10/16=0.625 使用到趴數上面就是62.5%
 html {
     font-size: 62.5%;
+
+    @include response(md) {
+        font-size: 56.25%;
+        //9/16 = 56.25;    
+    }
+
+    @include response(sm) {
+        font-size: 50%;
+        //8/16 = 56.25;    
+    }
 }
 
 // minmax使用兩個參數(最大值, 最小值) 功能使內容物不跑版

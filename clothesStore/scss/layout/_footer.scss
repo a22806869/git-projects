@@ -4,6 +4,10 @@
     @include flexPosition(space-around);
     padding: 5rem 0;
     border-top: .1rem solid color(primary);
+
+    @include response(lg) {
+        flex-wrap: wrap;
+    }
 }
 
 .footer-nav {
@@ -15,20 +19,37 @@
 }
 
 .contact {
+    @include response(lg) {
+        padding: 0 10rem;
+
+        // flex的屬性可以更改flexbox的順序
+        order: 1;
+        margin-top: 4rem;
+    }
+
     &-heading {
         font-size: size(xl);
         color: color(primary);
         text-align: center;
+
+        @include response(md) {
+            font-size: size(lg);
+        }
     }
 
     &-paragraph {
         font-size: size(lg);
         margin: 1rem 0;
         text-align: center;
+
+        @include response(md) {
+            font-size: size(md);
+        }
     }
 
     .inputs-group {
         display: flex;
+        justify-content: center;
 
         input {
             padding: 1rem;
@@ -85,8 +106,17 @@
             border-radius: 100%;
             @include flexPosition;
 
+            @include response(sm) {
+                width: 3rem;
+                height: 3rem;
+            }
+
             i {
-                font-size: size(md)
+                font-size: size(md);
+
+                @include response(sm) {
+                    font-size: size(sm);
+                }
             }
         }
     }
