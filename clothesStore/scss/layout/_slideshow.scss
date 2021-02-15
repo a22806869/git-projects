@@ -1,0 +1,134 @@
+.slideshow {
+    grid-column: 1/-1;
+    grid-row: 2/3;
+    position: relative;
+    width: 100%;
+    height: 80vh;
+
+    @include response(xl) {
+        height: 70vh;
+    }
+
+    @include response(lg) {
+        height: 60vh;
+    }
+
+    @include response(md) {
+        height: 50vh;
+    }
+
+    &-slide {
+
+        // 使用定位之後會讓所有圖片疊再一起，最後一張在最上層
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: inherit;
+        height: inherit;
+
+        // 這邊如果不把slide隱藏掉的話20s過後才會開始跑動畫
+        visibility: hidden;
+        opacity: 0;
+        animation: slideshow 20s linear infinite;
+
+        img {
+            width: inherit;
+            height: inherit;
+            // 避免圖片失真
+            object-fit: cover;
+        }
+    }
+
+    // side的內文部分
+    &-content {
+        background-color: rgba(color(secondary), .9);
+        position: absolute;
+        bottom: 6rem;
+        left: 6rem;
+        right: 6rem;
+        max-width: 40rem;
+        padding: 5rem;
+
+        @include response(lg) {
+            padding: 2rem;
+        }
+
+        h2 {
+            font-size: size(xl) +1.2rem;
+            color: color(primary);
+        }
+
+        p {
+            margin: 1rem 0;
+            font-size: size(sm);
+        }
+    }
+
+}
+
+
+// css 攏長版本
+// .slideshow-slide:nth-child(1) {
+//     animation-delay: 0s;
+// }
+
+// .slideshow-slide:nth-child(2) {
+//     animation-delay: 4s;
+// }
+
+// .slideshow-slide:nth-child(3) {
+//     animation-delay: 8s;
+// }
+
+// .slideshow-slide:nth-child(4) {
+//     animation-delay: 12s;
+// }
+
+// .slideshow-slide:nth-child(5) {
+//     animation-delay: 16s;
+// }
+
+// SASS簡潔版
+
+// 使用list 建立第幾個元素以及delay幾秒
+$animList: 1 0s,
+2 4s,
+3 8s,
+4 12s,
+5 16s;
+
+// 使用nth(前面擺入每個要被個別印出的的元素也就是(1 0s)(2 4s)的代表參數, 後方會擺入index從1開始算起)
+@each $item in $animList {
+    .slideshow-slide:nth-child(#{nth($item,1)}) {
+        animation-delay: nth($item, 2);
+    }
+}
+
+
+// 這邊製作fade in/out 的特效頭跟尾都處理隱藏以及透明達到這樣的效果
+@keyframes slideshow {
+    0% {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    2% {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    18% {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    20% {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    100% {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
