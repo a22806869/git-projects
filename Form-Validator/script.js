@@ -110,3 +110,34 @@
 //     inputValue === "";
 //   }
 // }
+
+
+let username = $('#username').val();
+let email = $('#email').val();
+let password = $('#password').val();
+let password2 = $('#password2').val();
+
+
+function showError(input, message) {
+
+  let parent = $(input).parent();
+  parent.addClass('form-control error')
+
+  let small = $('small').val();
+  small = message;
+
+};
+
+
+function showSuccess(input) {
+  let parent = $(input).parent();
+  parent.addClass('form-control success')
+
+};
+
+
+
+$('#form').submit(((e) => {
+  e.preventDefault();
+  check
+}))
