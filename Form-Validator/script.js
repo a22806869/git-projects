@@ -112,32 +112,59 @@
 // }
 
 
-let username = $('#username').val();
-let email = $('#email').val();
-let password = $('#password').val();
-let password2 = $('#password2').val();
+let username = $('#username');
+let email = $('#email');
+let password = $('#password');
+let password2 = $('#password2');
+
+
+
+function getFieldName(input) {
+
+  return input.charAt(0).toUpperCase() + input.slice(1)
+}
+
 
 
 function showError(input, message) {
+  let parent = $(input[0]).parentElement;
+  parent.attr('class', 'form-control error')
 
-  let parent = $(input).parent();
-  parent.addClass('form-control error')
-
-  let small = $('small').val();
+  let small = $('small').text();
   small = message;
-
 };
-
 
 function showSuccess(input) {
-  let parent = $(input).parent();
-  parent.addClass('form-control success')
-
+  let parent = $(input[0]).parentElement;
+  parent.attr('class', 'form-control success')
 };
 
 
+function checklength(input, min, max) {
+
+  let checknum = input[0].value
+  console.log(input[0].parentElement);
+
+  if (checknum.length < min) {
+    showError(input, `${input.value} must be at least ${min} characters`);
+    console.log('123');
+
+  } else if (checknum.length > max) {
+    showError(input, `${input} must be less than ${min} characters`);
+    console.log('sdfsd');
+  } else {
+    showSuccess(checknum);
+    console.log('sdf123');
+
+
+  }
+}
 
 $('#form').submit(((e) => {
+
   e.preventDefault();
-  check
+  checklength(username, 3, 15);
+  // checklength(password, 10, 16);
+
+  // console.log(username.val());
 }))
