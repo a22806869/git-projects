@@ -11,7 +11,29 @@ previousWeatherToggle.addEventListener('click', () => {
 })
 
 function getWeather(weather) {
-    fetch(API_URL).then(res => res.json().then(data => console.log(data)))
+    return fetch(API_URL)
+        .then(res => res.json())
+        .then(data => {
+            const {
+                sol_keys,
+                validity_checks,
+                ...solData
+            } = data
+            return Object.entries(solData).map(([sol, data]) => {
+                return {
+                    sol: sol,
+                    // maxTemp: data.AT.mx,
+                    // minTemp: data.AT.mn,
+                    // windSpeed: data.HWS.av,
+                    // windDirectionDegrees: data.WD.most_common.compass_degrees,
+                    // windDirectionCardinal: data.WD.most_common.compass_point,
+                    date: new Date(data.First_UTC)
+                }
+            })
+            console.log(temp);
+        })
 }
 
-getWeather();
+getWeather().then(sols => {
+    console.log(sols);
+});
