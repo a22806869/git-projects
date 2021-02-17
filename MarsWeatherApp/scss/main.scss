@@ -15,7 +15,7 @@
     --fs-xl: 4.5rem;
     --clr-light: #fff;
     --clr-gray: #989898;
-    --clr-drak: -#444;
+    --clr-dark: #444;
     --clr-accent: #D06D6D;
     --clr-accent-dark: #613131;
 }
@@ -207,6 +207,7 @@ a {
             height: 1rem;
             margin: 3px;
             width: 1rem;
+            // 左側自動填滿margin所以球會移動到最右邊
             margin-left: auto;
         }
 
@@ -214,8 +215,141 @@ a {
     }
 
     // 偽類選擇器:checked只會使用在任何選中狀態下的radio(<input type="radio">)，checkbox (<input type="checkbox">) 或("select") 元素中的option HTML元素("option")。
-    // 當選中checked時則底下的after修飾也就是圓點的部分會移動
-    //     :checked~.unit__toggle::after {
-    //         margin-left: 3px;
-    //     }
+    // 當選中checked時則底下的after修飾也就是圓點的部分會移動回左邊只有margin:3px的狀態
+    :checked~.unit__toggle::after {
+        margin-left: 3px;
+    }
+}
+
+.previous-weather {
+    background: var(--clr-light);
+    color: var(--clr-dark);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    // 把previous-weather欄位往下60%
+    transform: translateY(60%);
+    transition: transform 350ms ease;
+    padding: 3em;
+}
+
+.show-previous-weather {
+    cursor: pointer;
+    position: absolute;
+    background: var(--clr-light);
+    left: 50%;
+    width: 10rem;
+
+    // 這邊因為在previous-weather上加入padding會使箭頭區域跑掉所以加上clac而外加上3rem來確保位置不會跑掉
+    transform: translate(-50%, calc(-100% - 3rem));
+    text-align: center;
+    font-size: var(--fs-h2);
+    line-height: 1;
+    clip-path: polygon(50% 0, 0 100%, 100% 100%);
+    color: var(--clr-gray);
+    border: 0;
+    font-family: inherit;
+
+    &:hover,
+    &:focus {
+        color: var(--clr-dark);
+    }
+
+    span {
+        display: block;
+        transform: rotate(0);
+        transition: transform 300ms ease;
+    }
+}
+
+.previous-days {
+    display: flex;
+    justify-content: space-between;
+}
+
+.previous-weather__title {
+    text-align: center;
+}
+
+.previous-day {
+    opacity: 0;
+
+    &>* {
+        margin: 0;
+    }
+
+    &__date {
+        font-size: .9rem;
+        color: var(--clr-gray);
+    }
+
+    &__more-info {
+        border: 0;
+        border-radius: 100vmax;
+        background: var(--clr-dark);
+        color: var(--clr-light);
+        text-transform: uppercase;
+        padding: .3em 1em;
+        cursor: pointer;
+        margin-top: 1em;
+
+        &:hover {
+            background: var(--clr-gray)
+        }
+    }
+}
+
+
+
+
+.show-weather.previous-weather {
+    transform: translateY(0);
+
+    .show-previous-weather span {
+        display: block;
+        transform: rotate(180deg) translateY(-6px);
+    }
+
+
+    .previous-weather__title,
+    .previous-day {
+        opacity: 1;
+        animation: slideUpIn 750ms forwards;
+    }
+
+    .previous-weather__title {
+        text-align: left;
+    }
+
+
+
+
+    // 讓previous-day的資料有一個一個上來的特效
+    $slidTime: 1 100ms,
+    2 125ms,
+    3 150ms,
+    4 175ms,
+    5 200ms,
+    6 225ms,
+    7 250ms;
+
+    @each $slide in $slidTime {
+        .previous-day:nth-child(#{nth($slide,1)}) {
+            animation-delay: #{nth($slide,2)};
+        }
+    }
+}
+
+
+@keyframes slideUpIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
 }
