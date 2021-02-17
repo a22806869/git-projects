@@ -114,6 +114,29 @@ a {
 
 .wind {
     grid-column: 3/4;
+
+    &__direction {
+        --size: 6rem;
+        width: var(--size);
+        height: var(--size);
+        background-color: rgba(255, 255, 255, .5);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+    }
+
+    &__arrow {
+        // update Custom Props in JS
+        // to update the direction
+        --direction: 0deg;
+        --size: 1rem;
+        height: calc(var(--size)*3);
+        width: var(--size);
+        background: var(--clr-accent-dark);
+        clip-path: polygon(50% 0, 0% 100%, 100% 100%);
+        transform: translateY(-50%) rotate(var(--direction));
+        transform-origin: bottom center;
+    }
 }
 
 .info {
