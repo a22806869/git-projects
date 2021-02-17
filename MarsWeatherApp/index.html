@@ -27,7 +27,7 @@
         </div>
 
         <div class="temp">
-            <h2 class="section-title"></h2>
+            <h2 class="section-title">Temperature</h2>
             <p class="reading">High: -20°C</p>
             <p class="reading">Low: -120°F</p>
         </div>
@@ -53,13 +53,13 @@
         <div class="unit">
             <label for="cel">°C</label>
             <!-- 這邊讓預設做fah 而把checked放在cel-->
-            <input type="readio" id="cel" name="unit" checked>
+            <input type="radio" id="cel" name="unit" checked>
 
             <!-- when unit__toggle is clicked checkbox needs to change -->
             <button class="unit__toggle"></button>
 
             <label for="fah">°F</label>
-            <input type="readio" id="fah" name="unit">
+            <input type="radio" id="fah" name="unit">
         </div>
 
     </main>
