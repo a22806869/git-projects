@@ -6,7 +6,7 @@ function writeText() {
 
     index++;
 
-    if (index > text.length - 1) {
+    if (index > text.length) {
         index = 0;
     }
 };
