@@ -21,6 +21,11 @@ button {
     top: 20px;
     right: 20px;
     padding: 1rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+button.active {
+    transform: translateX(-100px);
 }
 
 nav {
