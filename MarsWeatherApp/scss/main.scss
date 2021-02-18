@@ -132,6 +132,9 @@ a {
         height: var(--size);
         background-color: rgba(255, 255, 255, .5);
         border-radius: 50%;
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
         display: grid;
         place-items: center;
         grid-row: 1/span 2;
@@ -210,8 +213,6 @@ a {
             // 左側自動填滿margin所以球會移動到最右邊
             margin-left: auto;
         }
-
-
     }
 
     // 偽類選擇器:checked只會使用在任何選中狀態下的radio(<input type="radio">)，checkbox (<input type="checkbox">) 或("select") 元素中的option HTML元素("option")。
@@ -311,7 +312,6 @@ a {
         transform: rotate(180deg) translateY(-6px);
     }
 
-
     .previous-weather__title,
     .previous-day {
         opacity: 1;
@@ -321,9 +321,6 @@ a {
     .previous-weather__title {
         text-align: left;
     }
-
-
-
 
     // 讓previous-day的資料有一個一個上來的特效
     $slidTime: 1 100ms,
@@ -340,7 +337,6 @@ a {
         }
     }
 }
-
 
 @keyframes slideUpIn {
     0% {
