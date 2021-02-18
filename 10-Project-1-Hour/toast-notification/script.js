@@ -1,11 +1,9 @@
 const btn = document.getElementById('btn');
 const container = document.getElementById('container');
 
-
 btn.addEventListener('click', () => {
     createNotifiction();
 });
-
 
 function createNotifiction() {
     const notif = document.createElement('div');
