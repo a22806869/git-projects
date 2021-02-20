@@ -1,5 +1,5 @@
 const imgs = document.getElementById('imgs');
-const img = document.querySelectorAll('#imgs img');
+const img = document.querySelectorAll('img');
 let idx = 0;
 
 function run() {
