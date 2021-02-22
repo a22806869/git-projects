@@ -1,1 +1,50 @@
 /* No CSS */
+
+#movies img,
+#movie img {
+    width: 100%;
+    /* object-fit: cover; */
+    /* height: auto; */
+}
+
+
+
+#movies .col-md-3 .well {
+    height: 390px;
+}
+
+#movies .col-md-3 img {
+    height: 240px;
+}
+
+
+@media (min-width: 960x) {
+    #movies .col-md-3 .well {
+        height: 390px;
+    }
+
+    #movies .col-md-3 img {
+        height: 240px;
+    }
+
+}
+
+
+input {
+    width: 100%;
+}
+
+div.bg-light {
+    margin-bottom: 20px;
+}
+
+a {
+    color: rgb(201, 53, 8);
+    text-decoration: none;
+}
+
+.wrapper {
+    margin: 20px auto;
+    width: 70%;
+    background-color: rgba(46, 42, 42, 0.7);
+}
