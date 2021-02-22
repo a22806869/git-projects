@@ -3,8 +3,6 @@ $(document).ready(() => {
         e.preventDefault();
         let searchText = $('#searchText').val();
         getMovies(searchText);
-
-
     });
 });
 
