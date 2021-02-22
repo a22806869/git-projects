@@ -1,24 +1,24 @@
 $(document).ready(() => {
-    $('#searchForm').submit((e) => {
-        e.preventDefault();
-        let searchText = $('#searchText').val();
-        getMovies(searchText);
-    });
+  $("#searchForm").submit((e) => {
+    e.preventDefault();
+    let searchText = $("#searchText").val();
+    getMovies(searchText);
+  });
 });
 
 function getMovies(searchText) {
-    $.ajax({
-        type: "GET",
-        url: `http://www.omdbapi.com/?s=${searchText}&apikey=c8fa2a97`,
-        dataType: "json",
-        success: function (res) {
-            console.log(res);
-            let movies = res.Search;
-            console.log(movies);
-            let output = '';
+  $.ajax({
+    type: "GET",
+    url: `https://www.omdbapi.com/?s=${searchText}&apikey=c8fa2a97`,
+    dataType: "json",
+    success: function (res) {
+      console.log(res);
+      let movies = res.Search;
+      console.log(movies);
+      let output = "";
 
-            $.each(movies, (index, movie) => {
-                output += `
+      $.each(movies, (index, movie) => {
+        output += `
                 <div class="col-md-3">
                   <div class="well text-center">
                     <img src="${movie.Poster}">
@@ -27,32 +27,32 @@ function getMovies(searchText) {
                   </div>
                 </div>
               `;
-            });
-            $('#movies').html(output);
-        },
-        error: function (err) {
-            console.log(err);
-        }
-    })
-};
+      });
+      $("#movies").html(output);
+    },
+    error: function (err) {
+      console.log(err);
+    },
+  });
+}
 
 function movieSelected(id) {
-    sessionStorage.setItem('movieId', id);
-    window.location = 'movie.html';
-    return false;
+  sessionStorage.setItem("movieId", id);
+  window.location = "movie.html";
+  return false;
 }
 
 function getMovie() {
-    let movieId = sessionStorage.getItem('movieId');
+  let movieId = sessionStorage.getItem("movieId");
 
-    $.ajax({
-        type: "GET",
-        url: `http://www.omdbapi.com/?i=${movieId}&apikey=c8fa2a97`,
-        dataType: "json",
-        success: function (res) {
-            let movie = res;
-            console.log(movie);
-            let output = `
+  $.ajax({
+    type: "GET",
+    url: `https://www.omdbapi.com/?i=${movieId}&apikey=c8fa2a97`,
+    dataType: "json",
+    success: function (res) {
+      let movie = res;
+      console.log(movie);
+      let output = `
                 <div class="row">
                   <div class="col-md-4">
                     <img src="${movie.Poster}" class="thumbnail">
@@ -75,17 +75,16 @@ function getMovie() {
                     <h3>Plot</h3>
                     ${movie.Plot}
                     <hr>
-                    <a href="http://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary">View IMDB</a>
+                    <a href="https://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary">View IMDB</a>
                     <a href="index.html" class="btn btn-default">Go Back To Search</a>
                   </div>
                 </div>
               `;
 
-            $('#movie').html(output);
-
-        },
-        error: function (err) {
-            console.log(err);
-        }
-    })
+      $("#movie").html(output);
+    },
+    error: function (err) {
+      console.log(err);
+    },
+  });
 }
