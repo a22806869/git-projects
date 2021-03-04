@@ -5,7 +5,6 @@ body {
 .fa-snowflake {
     color: #fff;
     position: absolute;
-    /* top: -20px; */
     animation: fall linear forwards;
 }
 
