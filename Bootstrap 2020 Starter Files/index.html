@@ -58,17 +58,41 @@
 
 	<!-- Image Carousel -->
 
+	<!-- 加入bootstarp js library讓slide可以動 -->
+	<div id="carousel" class="carousel slide" data-ride="carousel" data-interval="65000">
 
-	<!-- Carousel Content -->
+		<!-- Carousel Content -->
+		<div class="carousel-inner">
 
-	<!-- End Carousel Content -->
+			<div class="carousel-item active">
+				<!-- 這邊使用w-100會讓圖片吃到其父母層的100%寬度 -->
+				<img src="img/carousel/1.jpg" alt="" class="w-100">
+			</div>
+
+			<div class="carousel-item">
+
+				<img src="img/carousel/2.jpg" alt="" class="w-100">
+			</div>
+
+			<div class="carousel-item">
+
+				<img src="img/carousel/3.jpg" alt="" class="w-100">
+			</div>
+		</div>
+		<!-- End Carousel Content -->
 
 
-	<!-- Previous & Next Buttons -->
+		<!-- Previous & Next Buttons -->
+		<a href="#carousel" class="carousel-control-prev" role="button" data-slide="prev">
+			<span class="fas fa-chevron-left fa-2x"></span>
+		</a>
 
-	<!-- End Previous & Next Buttons -->
+		<a href="#carousel" class="carousel-control-next" role="button" data-slide="next">
+			<span class="fas fa-chevron-right fa-2x"></span>
+		</a>
+		<!-- End Previous & Next Buttons -->
 
-
+	</div>
 	<!-- End Image Carousel -->
 
 
