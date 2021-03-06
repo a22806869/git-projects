@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>HTML5 Website with Bootstrap | Responsive Website Design</title>
 	<link rel="shortcut icon" href="img/favicon.ico">
 	<!-- Bootstrap 4.5 CSS -->
@@ -13,14 +14,42 @@
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
 	<!-- Top Bar -->
-
+	<div class="top-bar">
+		<div class="container">
+			<!-- 這邊col-12代表延續整個頁面 -->
+			<div class="col-12 text-right">
+				<!-- 因為bootstrap的關係 a 的文字會直接顯示藍色 -->
+				<p><a href="tel:+999123888"> Call us at 1 (800) HTML - CSS</a></p>
+			</div>
+		</div>
+	</div>
 	<!-- End Top Bar -->
 
 
 	<!-- Navigation -->
+
+	<nav class="navbar bg-light navbar-light navbar-expand-large">
+		<div class="container">
+			<a href="index.html" class="navbar-brand"><img src="img/logo.png" alt="logo" title="logo"></a>
+
+			<button class="navbar-toggler"><span class="navbar-toggler-icon" type="button" data-toggle="collapse"
+					data-target="#narbarResponsive"></span></button>
+
+			<div class="collapse navbar-collapse" id="narbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+					<li class="nav-item"><a href="" class="nav-link">About</a></li>
+					<li class="nav-item"><a href="" class="nav-link">Services</a></li>
+					<li class="nav-item"><a href="" class="nav-link">Projects</a></li>
+					<li class="nav-item"><a href="" class="nav-link">Contact Us</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
 	<!-- End Navigation -->
 
@@ -28,14 +57,14 @@
 	<!-- Image Carousel -->
 
 
-		<!-- Carousel Content -->
-	
-		<!-- End Carousel Content -->
+	<!-- Carousel Content -->
+
+	<!-- End Carousel Content -->
 
 
-		<!-- Previous & Next Buttons -->
+	<!-- Previous & Next Buttons -->
 
-		<!-- End Previous & Next Buttons -->
+	<!-- End Previous & Next Buttons -->
 
 
 	<!-- End Image Carousel -->
@@ -55,14 +84,14 @@
 	<!-- Start Fixed Background IMG -->
 
 	<!-- End Fixed Background IMG -->
- 
-	
+
+
 	<!-- Emoji Navbar Second -->
 
 
 	<!-- Modal Popup -->
 
-		
+
 	<!-- Start Two Column Section -->
 
 	<!-- End Two Column Section -->
@@ -97,4 +126,5 @@
 
 	<!-- End Script Source Files -->
 </body>
+
 </html>
