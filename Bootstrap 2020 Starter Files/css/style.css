@@ -147,8 +147,39 @@ body {
 }
 
 /*============= FOOTER =============*/
+footer {
+  background-color: #383838;
+  padding: 1rem 2rem 3rem;
+}
 
+footer img {
+  height: 3.5rem;
+  margin: 1.5rem auto;
+}
 
+footer p,
+footer a,
+.socket a {
+  color: white;
+  text-decoration: none;
+}
+
+ul.social {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  max-width: 16rem;
+  align-items: center;
+  padding: 0;
+}
+
+footer a {
+  font-size: 2.3rem;
+}
+
+footer a:hover {
+  color: #68a0d2;
+}
 
 /*============= SOCKET =============*/
 
