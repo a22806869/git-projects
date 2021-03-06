@@ -120,8 +120,13 @@ body {
 
 
 /*===== FIXED BACKGROUND IMG =====*/
+.fixed {
+  background-image: url("../img/matrix.jpg");
+  position: fixed;
+}
 
 .fixed-background {
+  padding: 10rem 0;
   overflow: hidden;
   /*-- Correction for iOS --*/
 }
