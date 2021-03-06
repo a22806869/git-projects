@@ -133,8 +133,18 @@ body {
 
 
 /*-- Emoji Navbar --*/
+.emoji {
+  background-image: linear-gradient(to right, #4981b3, #ac2615);
+  min-height: 0 !important;
+  padding: .4rem 0 !important;
+}
 
-
+/* 這邊很特別fonawesome的class會跟html那邊不同要去google inspect 那邊看 */
+.emoji svg {
+  margin: 0 auto;
+  color: white;
+  font-size: 2rem;
+}
 
 /*============= FOOTER =============*/
 
