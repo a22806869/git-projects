@@ -9,26 +9,26 @@ previousWeatherToggle.addEventListener("click", () => {
   previousWeather.classList.toggle("show-weather");
 });
 
-function getWeather(weather) {
-  return fetch(API_URL)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      const { sol_keys, validity_checks, ...solData } = data;
-      return Object.entries(solData).map(([sol, data]) => {
-        return {
-          sol: sol,
-          maxTemp: data.AT.mx,
-          minTemp: data.AT.mn,
-          windSpeed: data.HWS.av,
-          windDirectionDegrees: data.WD.most_common.compass_degrees,
-          windDirectionCardinal: data.WD.most_common.compass_point,
-          date: new Date(data.First_UTC),
-        };
-      });
-    });
-}
+// function getWeather(weather) {
+//   return fetch(API_URL)
+//     .then((res) => res.json())
+//     .then((data) => {
+//       console.log(data);
+//       const { sol_keys, validity_checks, ...solData } = data;
+//       return Object.entries(solData).map(([sol, data]) => {
+//         return {
+//           sol: sol,
+//           maxTemp: data.AT.mx,
+//           minTemp: data.AT.mn,
+//           windSpeed: data.HWS.av,
+//           windDirectionDegrees: data.WD.most_common.compass_degrees,
+//           windDirectionCardinal: data.WD.most_common.compass_point,
+//           date: new Date(data.First_UTC),
+//         };
+//       });
+//     });
+// }
 
-getWeather().then((sols) => {
-  console.log(sols);
-});
+// getWeather().then((sols) => {
+//   console.log(sols);
+// });
