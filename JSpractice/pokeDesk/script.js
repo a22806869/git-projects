@@ -19,7 +19,7 @@ const colors = {
 
 const main_types = Object.keys(colors);
 
-console.log(main_types);
+// console.log(main_types);
 
 const fetchPokemons = async () => {
     for (let i = 1; i < pokemons_number; i++) {
@@ -41,11 +41,12 @@ function createPokemonCard(pokemon) {
     pokemonEl.classList.add('pokemon');
 
     const poke_types = pokemon.types.map(el => el.type.name);
-    const type = main_types.find(type => poke_types.indexOf(type) > -1);
     const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
-    const color = colors[type];
 
+    const type = main_types.find(type => poke_types.indexOf(type) > -1);
+    const color = colors[type];
     pokemonEl.style.backgroundColor = color;
+
 
     const pokeInnerHTML = `
     <div class="img-container">
