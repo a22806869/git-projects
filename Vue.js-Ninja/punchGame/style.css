@@ -2,12 +2,12 @@
     width: 200px;
     height: 500px;
     margin: 0 auto;
-    background: url(https://raw.githubusercontent.com/chiehLiu/git-projects/gh-pages/Vue.js-Ninja/img/bag.png) center no-repeat;
+    background: url(https://raw.githubusercontent.com/chiehLiu/git-projects/gh-pages/Vue.js-Ninja/punchGame/img/bag.png) center no-repeat;
     background-size: 80%;
 }
 
 #bag.burst {
-    background: url(https://raw.githubusercontent.com/chiehLiu/git-projects/gh-pages/Vue.js-Ninja/img/bag-burst.png) center no-repeat;
+    background: url(https://raw.githubusercontent.com/chiehLiu/git-projects/gh-pages/Vue.js-Ninja/punchGame/img/bag-burst.png) center no-repeat;
     background-size: 80%;
 }
 
