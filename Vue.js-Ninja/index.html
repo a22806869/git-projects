@@ -13,16 +13,16 @@
     <div id="vue-app">
         <!-- bag image -->
 
-        <div id="bag"></div>
+        <div id="bag" v-bind:class="{burst: ended}"></div>
         <!-- bag health  -->
         <div id="bag-health">
-            <div></div>
+            <div v-bind:style="{ width: health + '%'}"></div>
         </div>
         <!-- game controls -->
 
         <div id="controls">
-            <button>Punch</button>
-            <button>Restart</button>
+            <button v-on:click="punch" v-show="!ended">Punch</button>
+            <button v-on:click="restart">Restart</button>
         </div>
 
 
