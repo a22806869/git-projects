@@ -67,7 +67,7 @@ function nextPage() {
 
   // 清空內容
   // $(".results").html("");
-  // $(".buttons").html("");
+  $(".buttons").html("");
 
   $.ajax({
     type: "GET",
@@ -123,7 +123,7 @@ function prevPage() {
 
   // 清空內容
   // $(".results").html("");
-  // $(".buttons").html("");
+  $(".buttons").html("");
 
   $.ajax({
     type: "GET",
