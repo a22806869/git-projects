@@ -66,8 +66,8 @@ function nextPage() {
   q = $("#inputval").val();
 
   // 清空內容
-  $(".results").html("");
-  $(".buttons").html("");
+  // $(".results").html("");
+  // $(".buttons").html("");
 
   $.ajax({
     type: "GET",
@@ -122,8 +122,8 @@ function prevPage() {
   q = $("#inputval").val();
 
   // 清空內容
-  $(".results").html("");
-  $(".buttons").html("");
+  // $(".results").html("");
+  // $(".buttons").html("");
 
   $.ajax({
     type: "GET",
