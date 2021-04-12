@@ -1,6 +1,6 @@
 <template>
 <div>
-  <form-helper>
+  -helper>
     <div slot="form-header">
       <h3>This is the title of the form</h3>
       <p>information about the form</p>
@@ -34,4 +34,6 @@ import formHelper from'./components/formHelper.vue'
     }
   
 </script>
-<style></style>
+<style>
+
+</style>
